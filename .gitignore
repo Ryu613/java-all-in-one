@@ -29,3 +29,5 @@ build
 .settings/
 .project
 .gitattributes
+/bin/
+.idea
