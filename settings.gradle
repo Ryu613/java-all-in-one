@@ -1,2 +1,3 @@
-project.root.name=java-all-in-one
-include(':book')
+rootProject.name = 'java-all-in-one'
+include(":book")
+include(":book:java-8-in-action")
