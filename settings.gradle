@@ -1,0 +1,2 @@
+project.root.name=java-all-in-one
+include(':book')
