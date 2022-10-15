@@ -31,3 +31,4 @@ build
 .gitattributes
 /bin/
 .idea
+/.idea/
