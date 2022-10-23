@@ -1,5 +1,7 @@
 package example.p121.groupingBy;
 
+import example.p130.collector.ToListCollector;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -77,5 +79,10 @@ public class Starter {
                                 )
                         )
                 );
+        //自定义Collector,必须用new来实例化
+        List<Dish> dishes = menu.stream().collect(new ToListCollector<Dish>());
+        //或者用collect方法
+        //不能传递Characteristics， 永远都是IDENTITY_FINISH,CONCURRENT收集器
+        List<Dish> dishes2 = menu.stream().collect(ArrayList::new, List::add, List::addAll);
     }
 }
