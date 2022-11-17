@@ -21,3 +21,5 @@
 ### 5. Optional
 - 替代非空判断，减少NPE发生，减少代码空判断逻辑
 - 注意，Optional不支持序列化
+### 6. CompletableFuture
+- 
