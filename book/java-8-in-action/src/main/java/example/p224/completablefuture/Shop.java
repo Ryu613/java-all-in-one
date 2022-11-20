@@ -1,5 +1,6 @@
 package example.p224.completablefuture;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
@@ -17,6 +18,20 @@ public class Shop {
     //同步方法，由于delay()会阻塞
     public double getPrice(String product) {
         return calculatePrice(product);
+    }
+
+    public String getPrice2(String product) {
+        double price = calculatePrice(product);
+        Discount.Code code = Discount.Code.values()[random.nextInt(Discount.Code.values().length)];
+        return String.format("%s:%.2f:%s", name, price, code);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Future<Double> getPriceAsync(String product) {
