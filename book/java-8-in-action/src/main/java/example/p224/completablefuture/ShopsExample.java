@@ -1,5 +1,7 @@
 package example.p224.completablefuture;
 
+import sun.plugin2.main.client.DisconnectedExecutionContext;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -7,6 +9,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ShopsExample {
 
@@ -54,9 +57,23 @@ public class ShopsExample {
     public List<String> findPricesCompletableFuture(String product) {
         List<CompletableFuture<String>> priceFuture = shops.parallelStream()
                 .map(shop -> CompletableFuture.supplyAsync(() -> shop.getName() + " price is " + shop.getPrice("iPhone"), executor))
+                .map(future -> future.thenApply(Quote::parse))
+                .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(
+                        () -> Discount.applyDiscount(quote), executor
+                )))
                 .collect(Collectors.toList());
         return priceFuture.stream()
                 .map(CompletableFuture::join)
                 .collect(Collectors.toList());
+    }
+
+    public Stream<CompletableFuture<String>> findPricesStream(String product) {
+        return shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(
+                        () -> shop.getPrice(product), executor
+                )).map(future -> future.thenApply(Quote::parse))
+                .map(future -> future.thenCompose(quote -> CompletableFuture.supplyAsync(
+                        () -> Discount.applyDiscount(quote), executor
+                )));
     }
 }
