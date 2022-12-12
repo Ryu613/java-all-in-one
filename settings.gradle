@@ -1,3 +1,6 @@
 rootProject.name = 'java-all-in-one'
 include("book")
 include("book:java-8-in-action")
+include 'demo'
+include 'book:dai-ma-jing-jin-zhi-lu'
+
