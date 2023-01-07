@@ -4,13 +4,9 @@ import iterator.ex1.Book;
 import iterator.ex1.BookShelf;
 import iterator.ex1.Iterator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ExampleStarter {
     public static void main(String[] args) {
         startEx1();
-        List a = new ArrayList<>();
     }
 
     public static void startEx1() {
