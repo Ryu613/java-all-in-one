@@ -5,4 +5,5 @@ include 'demo'
 include 'book:dai-ma-jing-jin-zhi-lu'
 include 'book:tu-jie-she-ji-mo-shi'
 include 'book:netty-in-action'
+include 'demo:chat-room'
 
