@@ -10,4 +10,6 @@ include 'demo:spring'
 include 'open-source'
 include 'open-source:disruptor'
 include 'book:effective-java'
+include 'theme-learning'
+include 'theme-learning:design-pattern'
 
