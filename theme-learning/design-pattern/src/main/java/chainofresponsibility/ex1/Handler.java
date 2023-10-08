@@ -1,4 +1,4 @@
-package responsibleChain.ex1;
+package chainofresponsibility.ex1;
 
 public interface Handler {
     void setNextHandler(Handler nextHandler);
